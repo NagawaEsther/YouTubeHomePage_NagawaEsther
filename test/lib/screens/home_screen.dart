@@ -154,7 +154,7 @@ class HomeScreen extends StatelessWidget {
             Row(
               children: [
                 const CircleAvatar(
-                  backgroundColor: Colors.black,
+                  backgroundColor: Colors.white,
                   radius: 20,
                 ),
                 const SizedBox(width: 10),
