@@ -11,12 +11,15 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Row(
-          children: [
-            Image.network(
+           children: [
+          Padding(
+           padding: const EdgeInsets.only(left: 0.0, top: 0.0, right: 0.0, bottom: 0.0), 
+            child: Image.network(
               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRH6dow_QgTfElDMYeANJaIQM7CvRiftBRopg&s',
-              width:150,
+              width: 150, 
               height: 150,
             ),
+          ),
             const Spacer(),
             IconButton(
               icon: const Icon(Icons.search, color: Colors.white),
@@ -41,9 +44,7 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: _buildBottomNavigationBar(),
-     
     );
-  
   }
 
   Widget _buildVideoCategorySection() {
@@ -81,37 +82,31 @@ class HomeScreen extends StatelessWidget {
         'views': '1M views',
         'uploadTime': '2 days ago',
         'thumbnailUrl': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJtmXoTraWXsRMlAl4uVHxq2BAIW6Q8sxd-f-g4Q-0_uiHxn7bnRjADh4&s',
-      
       },
       {
         'channelName': 'Gaming Channel',
         'views': '500K views',
         'uploadTime': '3 days ago',
         'thumbnailUrl': 'https://media.istockphoto.com/id/1777139467/photo/soccer-goalkeeper-catching-ball.webp?a=1&b=1&s=612x612&w=0&k=20&c=ez0TLRhUsLgIGZwXJt_aYn_F1X5rfukYq0o6Lgeb5IQ=',
-      
       },
       {
         'channelName': 'News Channel',
         'views': '750K views',
         'uploadTime': '1 week ago',
-        'thumbnailUrl': 'https://img.freepik.com/premium-photo/anchorman-reading-news-headlines_482257-96459.jpg?size=626&ext=jpg&ga=GA1.1.22795147.1726897544&semt=ais_hybrid'
-     
+        'thumbnailUrl': 'https://img.freepik.com/premium-photo/anchorman-reading-news-headlines_482257-96459.jpg?size=626&ext=jpg&ga=GA1.1.22795147.1726897544&semt=ais_hybrid',
       },
       {
         'channelName': 'Movies Channel',
         'views': '2M views',
         'uploadTime': '1 day ago',
         'thumbnailUrl': 'https://e7.pngegg.com/pngimages/518/548/png-clipart-fx-movie-channel-logo-film-fox-movies-20th-century-fox-logo-television-text-thumbnail.png',
-       
       },
       {
         'channelName': 'Sports Channel',
         'views': '200K views',
         'uploadTime': '5 days ago',
-        'thumbnailUrl': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbkKL4HVVL9ZksmEP_XCsegbFqJvxiLqy3iQ&s'
-        
+        'thumbnailUrl': 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbkKL4HVVL9ZksmEP_XCsegbFqJvxiLqy3iQ&s',
       },
-      
     ];
 
     return Column(
@@ -121,8 +116,6 @@ class HomeScreen extends StatelessWidget {
           video['views']!,
           video['uploadTime']!,
           video['thumbnailUrl']!,
-         
-
         );
       }).toList(),
     );
@@ -133,12 +126,9 @@ class HomeScreen extends StatelessWidget {
     String views,
     String uploadTime,
     String thumbnailUrl,
-   
   ) {
     return GestureDetector(
-      onTap: () {
-       
-      },
+      onTap: () {},
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -179,35 +169,53 @@ class HomeScreen extends StatelessWidget {
   }
 
   Widget _buildShortsSection() {
+    final List<String> shortsData = [
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc3cDCGEIjNT3hw7uBJeo7bduQL8PlCf-Lwu44olo2wMnC6B4_fwglLYM7PCgH4_aDQrE&usqp=CAU',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjZjpFqrlUV_Fhgo-pHR_2M1PQ5MQiEUqdaA&s',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGGt6CVlSlI7ZOGUupHPHCf-4Cz8kD62Nlpw&s',
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpNSm11xJYs4R_zNMTO8UWBtTdPVmsqea2rg&s',
+    ];
+
     return Column(
       children: [
         const Padding(
           padding: EdgeInsets.all(8.0),
-          child: Text(
-            'Shorts',
-            
-            style: TextStyle(color: Colors.white, fontSize: 18),
+          child: Row(
+            children: [
+                Icon(Icons.videocam, color: Colors.red), 
+              SizedBox(width: 8),
+              Text(
+                'Shorts',
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
+            ],
           ),
         ),
-        SizedBox(
-          height: 150,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: List.generate(
-              5,
-              (index) => Container(
-                width: 120,
-                margin: const EdgeInsets.symmetric(horizontal: 8),
-                color: Colors.grey[800], // Placeholder for short video thumbnail
-                child: Center(
-                  child: Text(
-                    'Short Video $index',
-                    style: TextStyle(color: Colors.white),
-                  ),
+        GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 16 / 9,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
+          ),
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          itemCount: shortsData.length,
+          itemBuilder: (context, index) {
+            return Container(
+              decoration: BoxDecoration(
+                color: Colors.grey[800],
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.network(
+                  shortsData[index],
+                  fit: BoxFit.cover,
                 ),
               ),
-            ),
-          ),
+            );
+          },
         ),
       ],
     );
@@ -244,3 +252,5 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+
