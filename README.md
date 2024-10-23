@@ -1,4 +1,5 @@
 
-![youtube_homepage_1](https://github.com/user-attachments/assets/c9459755-2cb2-448c-b8a3-07dc320f676c)
+![homepage](https://github.com/user-attachments/assets/9f47aac5-47a2-46c1-949b-726bd2c14add)
 
-![shorts](https://github.com/user-attachments/assets/5213b675-f966-4270-8fe6-9dea16595417)
+
+![shorts](https://github.com/user-attachments/assets/77382580-6ec8-4142-8d0b-30b2c3c29985)
